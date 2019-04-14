@@ -9,42 +9,42 @@ mybatis:
  mapper-locations: # 所有的mapper映射文件
  - classpath:mapping/*.xml
 spring:
+ #######定义应用名，用于在eureka中显示服务的名称
+ application:
+   name: cloud-provider
+  #######数据源
  datasource:
    type: com.alibaba.druid.pool.DruidDataSource # 配置当前要使用的数据源的操作类型
-   driver-class-name: com.mysql.jdbc.Driver # 配置MySQL的驱动程序类
+   #driver-class-name: com.mysql.cj.jdbc.Driver # 配置MySQL的驱动程序类。boot的2.1.X及以后的版本使用此类
+   driver-class-name: com.mysql.jdbc.Driver # 配置MySQL的驱动程序类。boot的2.0.X及以前的版本使用此类
    url: jdbc:mysql://localhost:3306/springcloud?serverTimezone=GMT%2B8 # 数据库连接地址
    username: root # 数据库用户名
-   password: root1234% # 数据库连接密码
- application:
-   name: microcloud-config-product-client
+   password: root # 数据库连接密码
  profiles: dev
 
 logging:
   level:
     cn.enjoy.mapper: debug
 
+############注册到eureka  
 eureka:
   client: # 客户端进行Eureka注册的配置
     service-url:
-      defaultZone: http://admin:enjoy@localhost:7001/eureka
+      ###指定eureka注册中心
+      defaultZone: http://admin:user@localhost:7001/eureka #注册中心使用安全模式。单个eureka注册中心时
+     
   instance:
-    instance-id: microcloud-config-product-client
-    prefer-ip-address: true
-    lease-renewal-interval-in-seconds: 2 # 设置心跳的时间间隔（默认是30秒）
-    lease-expiration-duration-in-seconds: 5  # 如果现在超过了5秒的间隔（默认是90秒）
+    instance-id: provider-product    #在eureka注册中心的STATUS一栏中显示的名称
+    prefer-ip-address: true #在浏览器下方的地址栏上显示的地址，如果设置为true，表示显示真实地址
+    lease-renewal-interval-in-seconds: 2 # 设置心跳的时间间隔（默认是30秒），一般情况下就使用默认的
+    lease-expiration-duration-in-seconds: 5  # 如果现在超过了5秒的间隔（默认是90秒）。表示距离上一次发送心跳之后等待下一次发送心跳的间隔时间，如果超过了此间隔时间，则认为该微服务已经宕机了，那么就可以被注册中心移除。一般情况下就使用默认的
+
 
 info:
-  app.name: microcloud-provider-product
+  app.name: cloud-provider
   company.name: enjoy
   build.artifactId: $project.artifactId$
-  build.modelVersion: $project.modelVersion$
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
-        
+  build.modelVersion: $project.modelVersion$    
         
 ---
 server:
@@ -53,38 +53,39 @@ mybatis:
  mapper-locations: # 所有的mapper映射文件
  - classpath:mapping/*.xml
 spring:
+ #######定义应用名，用于在eureka中显示服务的名称
+ application:
+   name: cloud-provider
+  #######数据源
  datasource:
    type: com.alibaba.druid.pool.DruidDataSource # 配置当前要使用的数据源的操作类型
-   driver-class-name: com.mysql.jdbc.Driver # 配置MySQL的驱动程序类
+   #driver-class-name: com.mysql.cj.jdbc.Driver # 配置MySQL的驱动程序类。boot的2.1.X及以后的版本使用此类
+   driver-class-name: com.mysql.jdbc.Driver # 配置MySQL的驱动程序类。boot的2.0.X及以前的版本使用此类
    url: jdbc:mysql://localhost:3306/springcloud?serverTimezone=GMT%2B8 # 数据库连接地址
    username: root # 数据库用户名
-   password: root1234% # 数据库连接密码
- application:
-   name: microcloud-config-product-client
- profiles: beta
+   password: root # 数据库连接密码
+ profiles: dev
 
 logging:
   level:
     cn.enjoy.mapper: debug
 
+############注册到eureka  
 eureka:
   client: # 客户端进行Eureka注册的配置
     service-url:
-      defaultZone: http://admin:enjoy@localhost:7002/eureka
+      ###指定eureka注册中心
+      defaultZone: http://admin:user@localhost2:7002/eureka #注册中心使用安全模式。单个eureka注册中心时
+     
   instance:
-    instance-id: microcloud-config-product-client
-    prefer-ip-address: true
-    lease-renewal-interval-in-seconds: 2 # 设置心跳的时间间隔（默认是30秒）
-    lease-expiration-duration-in-seconds: 5  # 如果现在超过了5秒的间隔（默认是90秒）
+    instance-id: provider-product    #在eureka注册中心的STATUS一栏中显示的名称
+    prefer-ip-address: true #在浏览器下方的地址栏上显示的地址，如果设置为true，表示显示真实地址
+    lease-renewal-interval-in-seconds: 2 # 设置心跳的时间间隔（默认是30秒），一般情况下就使用默认的
+    lease-expiration-duration-in-seconds: 5  # 如果现在超过了5秒的间隔（默认是90秒）。表示距离上一次发送心跳之后等待下一次发送心跳的间隔时间，如果超过了此间隔时间，则认为该微服务已经宕机了，那么就可以被注册中心移除。一般情况下就使用默认的
+
 
 info:
-  app.name: microcloud-config-product-client
+  app.name: cloud-provider
   company.name: enjoy
   build.artifactId: $project.artifactId$
-  build.modelVersion: $project.modelVersion$
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
+  build.modelVersion: $project.modelVersion$  
