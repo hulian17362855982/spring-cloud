@@ -31,7 +31,7 @@ eureka:
   client: # 客户端进行Eureka注册的配置
     service-url:
       ###指定eureka注册中心
-      defaultZone: http://admin:user@localhost:7001/eureka #注册中心使用安全模式。单个eureka注册中心时
+      defaultZone: http://admin:user@localhost:7001/eureka
      
   instance:
     instance-id: provider-product    #在eureka注册中心的STATUS一栏中显示的名称
@@ -75,7 +75,7 @@ eureka:
   client: # 客户端进行Eureka注册的配置
     service-url:
       ###指定eureka注册中心
-      defaultZone: http://admin:user@localhost2:7002/eureka #注册中心使用安全模式。单个eureka注册中心时
+      defaultZone: http://admin:user@localhost2:7002/eureka
      
   instance:
     instance-id: provider-product    #在eureka注册中心的STATUS一栏中显示的名称
