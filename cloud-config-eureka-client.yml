@@ -13,7 +13,7 @@ eureka:
     fetch-registry: false #表示不需要获取注册中心内注册的一些信息
     register-with-eureka: false #表示不需要往自己身上注册
     service-url:
-      defaultZone: http://admin:user@localhost:7001/eureka #单个eureka，可以不用指定
+      defaultZone: http://admin:user@localhost:7001/eureka
       
   instance: # eureak实例定义
     hostname: localhost # 定义 Eureka 实例所在的主机名称，可以是域名或ip
@@ -36,7 +36,7 @@ eureka:
     fetch-registry: false #表示不需要获取注册中心内注册的一些信息
     register-with-eureka: false #表示不需要往自己身上注册
     service-url:
-      defaultZone: http://admin:user@localhost2:7002/eureka #单个eureka，可以不用指定
+      defaultZone: http://admin:user@localhost2:7002/eureka
       
   instance: # eureak实例定义
     hostname: localhost2 # 定义 Eureka 实例所在的主机名称，可以是域名或ip
